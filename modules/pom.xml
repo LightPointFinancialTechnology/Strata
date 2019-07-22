@@ -58,6 +58,7 @@
     <module>calc</module>
     <module>measure</module>
     <module>report</module>
+    <module>all</module>
   </modules>
 
   <!-- ==================================================================== -->
@@ -115,22 +116,22 @@
         </configuration>
       </plugin>
       <!--  checkstyle -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>run-checkstyle</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>checkstyle</goal>
-            </goals>
-            <configuration>
-              <failsOnError>true</failsOnError>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+      <!--<plugin>-->
+        <!--<groupId>org.apache.maven.plugins</groupId>-->
+        <!--<artifactId>maven-checkstyle-plugin</artifactId>-->
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<id>run-checkstyle</id>-->
+            <!--<phase>process-sources</phase>-->
+            <!--<goals>-->
+              <!--<goal>checkstyle</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+              <!--<failsOnError>true</failsOnError>-->
+            <!--</configuration>-->
+          <!--</execution>-->
+        <!--</executions>-->
+      <!--</plugin>-->
       <!-- obtain git commit -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>

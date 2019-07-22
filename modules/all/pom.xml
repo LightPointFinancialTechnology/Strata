@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>strata-parent</artifactId>
+        <groupId>com.opengamma.strata</groupId>
+        <version>2.5.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.lp</groupId>
+    <artifactId>strata-all</artifactId>
+    <packaging>jar</packaging>
+
+
+    <dependencies>
+    <!-- OpenGamma -->
+    <dependency>
+        <groupId>com.opengamma.strata</groupId>
+        <artifactId>strata-collect</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.opengamma.strata</groupId>
+        <artifactId>strata-basics</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.opengamma.strata</groupId>
+        <artifactId>strata-product</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.opengamma.strata</groupId>
+        <artifactId>strata-data</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.opengamma.strata</groupId>
+        <artifactId>strata-math</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.opengamma.strata</groupId>
+        <artifactId>strata-market</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.opengamma.strata</groupId>
+        <artifactId>strata-loader</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.opengamma.strata</groupId>
+        <artifactId>strata-pricer</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.opengamma.strata</groupId>
+        <artifactId>strata-calc</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.opengamma.strata</groupId>
+        <artifactId>strata-measure</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.opengamma.strata</groupId>
+        <artifactId>strata-report</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <!--<finalName>strata-basics-shaded-${project.version}</finalName>-->
+                            <!--<version>2.5.0-SNAPSHOT</version>-->
+                            <relocations>
+                                <relocation>
+                                    <pattern>com.google</pattern>
+                                    <shadedPattern>shaded.com.google</shadedPattern>
+                                </relocation>
+                            </relocations>
+
+                            <artifactSet>
+                                <excludes>
+                                    <exclude>org.joda:joda-beans</exclude>
+                                    <exclude>org.joda:joda-convert</exclude>
+                                    <exclude>org.slf4j:slf4j-api</exclude>
+                                </excludes>
+                            </artifactSet>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <jpms.module.name>com.opengamma.strata.all</jpms.module.name>
+        <!-- Locate the root directory of the multi-module build -->
+        <root.dir>${project.basedir}/../..</root.dir>
+        <!-- Properties for maven-javadoc-plugin -->
+        <windowtitle>OpenGamma Strata All</windowtitle>
+        <doctitle><![CDATA[<h1>OpenGamma Strata ALL API</h1>]]></doctitle>
+    </properties>
+
+</project>
